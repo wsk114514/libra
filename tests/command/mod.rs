@@ -260,6 +260,7 @@ fn skip_permission_denied_test_if_root(test_name: &str) -> bool {
     is_root
 }
 
+pub mod stats_test;
 mod add_cli_test;
 mod add_json_test;
 mod add_test;

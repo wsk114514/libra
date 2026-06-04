@@ -392,7 +392,8 @@ enum Commands {
         after_help = command::bisect::BISECT_EXAMPLES
     )]
     Bisect(Bisect),
-
+    #[command(about = "Show file extension distribution in the working directory")]
+    Stats(command::stats::StatsArgs),
     #[command(
         subcommand,
         about = "Manage set of tracked repositories",
@@ -1180,6 +1181,7 @@ pub async fn parse_async(args: Option<&[&str]>) -> CliResult<()> {
             })?;
         }
         Commands::Clone(cmd_args) => command::clone::execute_safe(cmd_args, &output).await?,
+        Commands::Stats(cmd_args) => command::stats::execute_safe(cmd_args, &output).await?,
         Commands::Code(cmd_args) => command::code::execute(cmd_args, &output).await?,
         Commands::CodeControl(cmd_args) => command::code_control::execute(cmd_args).await?,
         Commands::Automation(cmd_args) => {
